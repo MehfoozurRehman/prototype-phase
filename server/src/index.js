@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+const Teacher = require("./routes/Teacher");
+const TimeTable = require("./routes/TimeTable");
+
 // api config
 dotenv.config();
 const app = express();
@@ -24,6 +27,9 @@ mongoose
 
 // api endpoints
 app.get("/", (req, res) => res.status(200).send("hello world"));
+
+app.use("/api/timetable", TimeTable);
+app.use("/api/teacher", Teacher);
 
 // listen
 app.listen(port, () => console.log(`listening on localhost:${port}`));
