@@ -43,6 +43,7 @@ body {
   color: #747474;
   width: 100%;
   max-width: 400px;
+  margin-right: 6px;
   border: 1px solid #f6f6f6;
   outline: 1px solid transparent;
 }
@@ -177,4 +178,55 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 30px;
+}
+.add__teacher__id__wraper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2em 2em 0.3em 2em;
+}
+.add__teacher__id__heading {
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.add__teacher__id__heading input {
+  border: none;
+  background-color: #417fdd;
+  padding: 12px;
+  border-radius: 6px;
+  outline: none;
+}
+.input__form__wraper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.input__form__container {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+}
+.input__form__text__box__select {
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: rgb(244, 240, 240);
+  padding: 1em 3em;
+  border-radius: 20px;
+  flex: 1;
+  margin-right: 8px;
+}
+.input__form__text__box input {
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  outline: none;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+}
+.input__form__text__box input::placeholder {
+  color: rgb(0, 0, 0);
 }
