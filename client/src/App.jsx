@@ -15,7 +15,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="details/:id" element={<Details />} />
+        <Route path="/details" element={<Details />} />
         <Route path="/add-teacher" element={<AddTeacher />} />
         <Route path="/edit-teacher" element={<EditTeacher />} />
         <Route path="/add-timetable" element={<AddTimeTable />} />

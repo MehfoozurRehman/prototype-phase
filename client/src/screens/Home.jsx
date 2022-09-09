@@ -75,7 +75,9 @@ export default function Home() {
                     <Button
                       variant="success"
                       onClick={() => {
-                        navigate("/details/" + item.t_id);
+                        navigate("/details", {
+                          state: item,
+                        });
                       }}
                     >
                       Details

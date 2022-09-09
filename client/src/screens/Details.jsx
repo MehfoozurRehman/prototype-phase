@@ -1,29 +1,29 @@
-import React, { useEffect } from "react";
-import useSwr from "swr";
-import { fetcher } from "../utils/fetcher";
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import { fetcher } from "../utils/fetcher";
+import Table from "react-bootstrap/Table";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import useSwr from "swr";
 
 export default function Details() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  const location = useLocation();
 
   const { data, mutate } = useSwr(
     import.meta.env.VITE_API_URL + "api/timetable",
     fetcher
   );
-  let newData = data.filter((item) => item.t_id === id);
+  let newData = data?.filter((item) => item.t_id === location.state.t_id);
 
   return (
     <>
       <Container>
         <Row style={{ marginBottom: "1em" }}>
-          <Col style={{ fontSize: 25 }}>{id}/timetables</Col>
+          <Col style={{ fontSize: 25 }}>{location.state.t_id}/timetables</Col>
           <Col></Col>
           <Col
             style={{
@@ -34,7 +34,9 @@ export default function Details() {
           >
             <Button
               onClick={() => {
-                navigate("/add-timetable");
+                navigate("/add-timetable", {
+                  state: { teacher: location.state, timetable: newData },
+                });
               }}
             >
               Add New
@@ -47,8 +49,7 @@ export default function Details() {
           <thead>
             <tr>
               <th>#</th>
-              <th>Actions</th>
-              <th>Teacher ID</th>
+              <th style={{ width: 300 }}>Actions</th>
               <th>Day</th>
               <th>Month</th>
               <th>Hour</th>
@@ -58,24 +59,26 @@ export default function Details() {
             {newData?.map((item, i) => (
               <tr>
                 <td>{i + 1}</td>
-                <td>
+                <td style={{ width: 300 }}>
                   <Button>Edit</Button>
                   <Button
                     variant="danger"
                     onClick={() => {
-                      axios.delete(
-                        import.meta.env.VITE_API_URL +
-                          "api/timetable/" +
-                          data._id
-                      );
-                      mutate();
+                      axios
+                        .delete(
+                          import.meta.env.VITE_API_URL +
+                            "api/timetable/" +
+                            item._id
+                        )
+                        .then(() => {
+                          mutate();
+                        });
                     }}
                     style={{ marginLeft: ".5em" }}
                   >
                     Delete
                   </Button>
                 </td>
-                <td>{item.t_id}</td>
                 <td>{item.day}</td>
                 <td>{item.month}</td>
                 <td>{item.hour}</td>
@@ -83,7 +86,7 @@ export default function Details() {
             ))}
           </tbody>
         </Table>
-        {newData.length === 0 ? (
+        {newData?.length === 0 ? (
           <Row
             style={{
               display: "flex",

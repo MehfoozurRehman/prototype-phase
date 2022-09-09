@@ -2,8 +2,7 @@ const mongoose = require("mongoose");
 
 const TimeTableSchema = mongoose.Schema({
   t_id: String,
-  time_id: String,
-  day: String,
+  day: Array,
   month: Number,
   hour: Number,
 });
