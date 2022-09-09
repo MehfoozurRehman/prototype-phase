@@ -60,7 +60,15 @@ export default function Details() {
               <tr>
                 <td>{i + 1}</td>
                 <td style={{ width: 300 }}>
-                  <Button>Edit</Button>
+                  <Button
+                    onClick={() => {
+                      navigate("/edit-timetable", {
+                        state: { teacher: location.state, timetable: item },
+                      });
+                    }}
+                  >
+                    Edit
+                  </Button>
                   <Button
                     variant="danger"
                     onClick={() => {
@@ -79,7 +87,7 @@ export default function Details() {
                     Delete
                   </Button>
                 </td>
-                <td>{item.day}</td>
+                <td>{item.day.map((item) => item.label)}</td>
                 <td>{item.month}</td>
                 <td>{item.hour}</td>
               </tr>

@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Select from "react-select";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export default function AddTeacher() {
   const navigate = useNavigate();

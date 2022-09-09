@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Select from "react-select";
-import { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Select from "react-select";
+import axios from "axios";
 
 export default function EditTeacher() {
   const location = useLocation();
-  console.log(location.state);
   const navigate = useNavigate();
   const [teacherId, setTeacherId] = useState("");
   const [teacherIdError, setTeacherIdError] = useState("");

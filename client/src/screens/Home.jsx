@@ -1,15 +1,14 @@
-import React from "react";
-import useSwr from "swr";
-import { fetcher } from "../utils/fetcher";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import { fetcher } from "../utils/fetcher";
+import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import useSwr from "swr";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -47,6 +46,7 @@ export default function Home() {
               onClick={() => {
                 navigate("/add-teacher");
               }}
+              style={{ marginBottom: 15 }}
             >
               Add New
             </Button>
@@ -102,7 +102,6 @@ export default function Home() {
                               item._id
                           )
                           .then(() => {
-                            console.log("hello");
                             mutate();
                           });
                       }}
