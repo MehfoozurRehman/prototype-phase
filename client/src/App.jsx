@@ -1,10 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./screens/Home";
-import Add from "./screens/Add";
 import Edit from "./screens/Edit";
 import Header from "./components/Header";
 import "./App.scss";
+import Details from "./screens/Details";
+import AddTeacher from "./screens/AddTeacher";
+import AddTimeTable from "./screens/AddTimeTable";
+import EditTeacher from "./screens/EditTeacher";
 
 export default function App() {
   return (
@@ -12,7 +15,10 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/add" element={<Add />} />
+        <Route path="details/:id" element={<Details />} />
+        <Route path="/add-teacher" element={<AddTeacher />} />
+        <Route path="/edit-teacher" element={<EditTeacher />} />
+        <Route path="/add-timetable" element={<AddTimeTable />} />
         <Route path="/edit" element={<Edit />} />
       </Routes>
     </>

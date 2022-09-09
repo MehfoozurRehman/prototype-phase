@@ -11,4 +11,13 @@ export default defineConfig({
       threshold: "500",
     }),
   ],
+  resolve: {
+    alias: [
+      {
+        // this is required for the SCSS modules
+        find: /^~(.*)$/,
+        replacement: "$1",
+      },
+    ],
+  },
 });
