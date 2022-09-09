@@ -26,7 +26,11 @@ mongoose
   .catch((err) => console.log(err));
 
 // api endpoints
-app.get("/", (req, res) => res.status(200).send("hello world"));
+app.get("/", (req, res) =>
+  res.status(200).json({
+    message: "Welcome to Teacher Timetable",
+  })
+);
 
 app.use("/api/timetable", TimeTable);
 app.use("/api/teacher", Teacher);
